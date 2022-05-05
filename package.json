@@ -1,0 +1,21 @@
+{
+  "name": "input-files",
+  "version": "1.0.0",
+  "description": "Read input files and sort content by conditions",
+  "main": "bin/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Jayden Jin",
+  "license": "ISC",
+  "bin": {
+    "input-files": "./bin/index.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "jest": "^28.0.3"
+  }
+}
