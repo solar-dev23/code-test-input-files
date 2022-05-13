@@ -104,9 +104,9 @@ export function getResult(sortData) {
 }
 
 function run() {
-  const inputData = readFiles('./files');
+  const dirPath = process.argv.slice(2)[0]
 
-  // console.log('inputData *****', inputData);
+  const inputData = readFiles(dirPath);
 
   const sort1Data = sort1(inputData);
   const sort2Data = sort2(inputData);
