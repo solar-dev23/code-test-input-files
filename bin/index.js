@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
 import fs from "fs";
+import path from "path";
 import { convertDate, convertGender, removeSpace } from "../utils/index.js";
 import { sort1, sort2, sort3 } from "../utils/sort.js";
+
 
 const INPUT_TYPES = ["comma", "pipe", "space"];
 
@@ -50,14 +52,22 @@ export function parseLine(type, line) {
   }
 }
 
-export function readFiles() {
+export function readFiles(directoryPath) {
+  const filePaths = path.join(directoryPath);
+
   let inputData = [];
 
   try {
-    for (const type of INPUT_TYPES) {
-      const fileContent = fs.readFileSync(`./files/${type}.txt`, "utf-8");
+    const files = fs.readdirSync(filePaths);
+
+    for (const file of files) {
+      const fileContent = fs.readFileSync(`./files/${file}`, "utf-8");
+
+      const type = getFileType(fileContent);
+
       for (const line of fileContent.split(/\r?\n/)) {
-        inputData.push(parseLine(type, line));
+        const parsedLine = parseLine(type, line)
+        inputData.push(parsedLine);
       }
     }
   } catch (error) {
@@ -65,6 +75,18 @@ export function readFiles() {
   }
 
   return inputData;
+}
+
+export function getFileType(fileContent) {
+  const firstLine = fileContent.split(/\r?\n/)[0];
+
+  if (firstLine.split(",").length > 1) {
+    return "comma"
+  } else if (firstLine.split("|").length > 1) {
+    return "pipe";
+  } else  {
+    return "space";
+  }
 }
 
 export function getResult(sortData) {
@@ -82,7 +104,10 @@ export function getResult(sortData) {
 }
 
 function run() {
-  const inputData = readFiles();
+  const inputData = readFiles('./files');
+
+  // console.log('inputData *****', inputData);
+
   const sort1Data = sort1(inputData);
   const sort2Data = sort2(inputData);
   const sort3Data = sort3(inputData);

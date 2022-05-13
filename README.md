@@ -67,3 +67,30 @@ Abercrombie Neil Male 2/13/1943 Tan
 ### Improve Suggestions
 
 - Use Typescript
+
+## Assessment
+### Pros
+ * really nice readme
+ * util functions for transforming data
+ * lots of error handling
+ * creation of mock data
+ * sort functions broken out
+ * output is correct
+ * tests on sorting
+ * responsibilities broken down quite nicely in primary binary file
+ * very functional in programming style
+ * tests run and all pass
+
+### Areas that could be improved
+ * sort tests a bit cumbersome to read through
+ * relies on input delimeter type to be tied to the filename
+ * perhaps a nitpick, but a slight preference for breaking down the primary binary file, not having all the main work functions in it
+ * console output in the tests
+
+### Areas to change
+ * allow input files to be arbitrarily named
+ * allow input files to be passed into the binary as CLI args
+ * triky-pipe
+
+https://prod.liveshare.vsengsaas.visualstudio.com/join?B98FD404B2CB892021D535ED3B46E0B6A591
+
