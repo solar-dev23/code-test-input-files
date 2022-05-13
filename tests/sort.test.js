@@ -1,7 +1,7 @@
 import { sort1, sort2, sort3 } from "../utils/sort";
 import { inputMock } from "./constants";
 
-test("sort1", () => {
+test("sort1 - females before males, then lastName ascending", () => {
   const sort1MockData = sort1(inputMock);
   expect(sort1MockData[0].gender).toBe("Female");
   expect(
